@@ -31,10 +31,16 @@ class GeminiClient:
 
 if __name__ == '__main__':
     # Example usage:
-    api_key_to_test = "AIzaSyBmFRX347NxFK3gVUzKLrCj_dGvWnd1FNg"
+    # Make sure GOOGLE_API_KEY is set in your environment or .env file
+    api_key = os.getenv("GOOGLE_API_KEY")
+    
+    if not api_key:
+        print("Error: GOOGLE_API_KEY not found in environment variables.")
+        print("Please set it using: export GOOGLE_API_KEY='your-api-key'")
+        exit(1)
     
     # Configure the API
-    genai.configure(api_key=api_key_to_test)
+    genai.configure(api_key=api_key)
     
     # List all available models
     print("Available Models:")
